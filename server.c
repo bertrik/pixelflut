@@ -180,9 +180,9 @@ static void *server_listen_thread(void *param)
 	addr_len = sizeof(addr);
 	struct timeval tv;
 
-	printf("Starting Server...\n");
-
 	server_t *server = (server_t*)param;
+
+	printf("Starting Server on port %d...\n", server->port);
 	server->socket = socket(PF_INET, SOCK_STREAM, 0);
 
 	tv.tv_sec = server->timeout;
@@ -243,7 +243,7 @@ static void *server_listen_thread(void *param)
 	}
 	close(server->socket);
 
-	printf("Ended listenting.\n");
+	printf("Ended listening.\n");
 	return 0;
 }
 
